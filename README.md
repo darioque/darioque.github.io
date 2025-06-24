@@ -245,3 +245,62 @@ CREATE TABLE tareas (
 ## Despliegue en GitHub Pages
 
  **Acceso:** `https://darioque.github.io/practica-formativa-2-redes/`
+
+
+##  Respuestas
+
+###  Por qué hashear contraseñas?
+
+### Definición
+El hasheo de contraseñas es el proceso de convertir una contraseña en texto plano en una cadena de caracteres irreversible mediante algoritmos criptográficos.
+
+### Razones Fundamentales
+
+#### 1. **Seguridad ante Brechas de Datos**
+- **Problema:** Si alguien accede a la base de datos, las contraseñas en texto plano quedan completamente expuestas
+- **Solución:** Con hasheo, incluso si acceden a la BD, solo ven cadenas sin sentido como `pbkdf2:sha256:260000$xyz...`
+- **Ejemplo real:** En 2013, Adobe sufrió una brecha que expuso 150 millones de contraseñas, pero como estaban hasheadas, fue más difícil usarlas
+
+#### 2. **Protección contra Personal Interno**
+- **Problema:** Administradores de sistemas o desarrolladores podrían ver contraseñas
+- **Solución:** Ni siquiera el equipo técnico puede ver las contraseñas originales
+- **Beneficio:** Cumple con principios de "zero knowledge" y privacidad
+
+
+### Ventajas de usar SQLite en este proyecto
+
+### Definición
+
+SQLite es una biblioteca de base de datos SQL embebida, autocontenida, sin servidor y de configuración cero.
+
+### Ventajas Específicas para Este Proyecto
+
+#### 1. **Simplicidad de Implementación**
+```python
+# No necesita servidor separado
+conn = sqlite3.connect('tareas.db') 
+
+# Comparado con PostgreSQL:
+# 1. Instalar PostgreSQL server
+# 2. Configurar usuario/contraseña
+# 3. Crear base de datos
+# 4. Configurar conexiones
+# 5. Manejar dependencias 
+```
+
+#### 2. **Zero Configuration**
+- **No requiere instalación:** Viene incluido con Python
+- **No requiere configuración:** Sin usuarios, puertos, o permisos complejos
+
+
+#### 3. **Atomicidad y Transacciones ACID**
+```python
+conn = sqlite3.connect('tareas.db')
+conn.execute('BEGIN TRANSACTION')
+try:
+    conn.execute('INSERT INTO usuarios...')
+    conn.execute('INSERT INTO tareas...')
+    conn.commit()  # Todo o nada
+except:
+    conn.rollback()  # Restaura estado anterior
+```
