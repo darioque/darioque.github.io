@@ -244,4 +244,4 @@ CREATE TABLE tareas (
 
 ## Despliegue en GitHub Pages
 
- **Acceso:** `https://darioque.github.io/practica-formativa-2-redes/`
+ **Acceso:** `[PFO2]https://darioque.github.io/`
