@@ -244,4 +244,4 @@ CREATE TABLE tareas (
 
 ## Despliegue en GitHub Pages
 
- **Acceso:** `[PFO2]https://darioque.github.io/`
+ **Acceso:** `https://darioque.github.io/`
