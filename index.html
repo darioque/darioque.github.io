@@ -1,0 +1,73 @@
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sistema de Gestión de Tareas</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 40px; background-color: #f5f5f5; }
+            .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+            h1 { color: #333; text-align: center; }
+            .endpoint { background: #e8f4fd; padding: 15px; margin: 10px 0; border-radius: 5px; border-left: 4px solid #2196F3; }
+            .method { font-weight: bold; color: #2196F3; }
+            code { background: #f1f1f1; padding: 2px 5px; border-radius: 3px; font-family: monospace; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1> Sistema de Gestión de Tareas</h1>
+            <p>API REST para gestión de usuarios y tareas con autenticación segura.</p>
+            
+            <h2> Endpoints Disponibles:</h2>
+            
+            <div class="endpoint">
+                <div class="method">POST /registro</div>
+                <p><strong>Descripción:</strong> Registra un nuevo usuario en el sistema</p>
+                <p><strong>Cuerpo:</strong> <code>{"usuario": "nombre", "contraseña": "1234"}</code></p>
+                <p><strong>Respuesta exitosa:</strong> <code>{"mensaje": "Usuario registrado exitosamente", "usuario": "nombre"}</code></p>
+            </div>
+            
+            <div class="endpoint">
+                <div class="method">POST /login</div>
+                <p><strong>Descripción:</strong> Inicia sesión con credenciales de usuario</p>
+                <p><strong>Cuerpo:</strong> <code>{"usuario": "nombre", "contraseña": "1234"}</code></p>
+                <p><strong>Respuesta exitosa:</strong> <code>{"mensaje": "Inicio de sesión exitoso", "usuario": "nombre"}</code></p>
+            </div>
+            
+            <div class="endpoint">
+                <div class="method">GET /tareas</div>
+                <p><strong>Descripción:</strong> Muestra página de bienvenida para usuarios autenticados</p>
+                <p><strong>Requiere:</strong> Sesión activa (haber hecho login previamente)</p>
+            </div>
+            
+            <div class="endpoint">
+                <div class="method">POST /logout</div>
+                <p><strong>Descripción:</strong> Cierra la sesión del usuario actual</p>
+            </div>
+            
+            <h2> Cómo probar la API:</h2>
+            
+            <h3> Colección de Postman Incluida:</h3>
+            <p>El proyecto incluye una <strong>colección completa de Postman</strong> con todos los endpoints preconfigurados:</p>
+            <ul>
+                <li> <strong>Archivo:</strong> <code>coleccion-postman.json</code></li>
+                <li> <strong>Tests automatizados</strong> para cada endpoint</li>
+                <li> <strong>Variables automáticas</strong> (usuario único, gestión de cookies)</li>
+                <li> <strong>Ejemplos de respuesta</strong> para éxito y errores</li>
+            </ul>
+            
+            <p><strong>Para usar:</strong></p>
+            <ol>
+                <li>Importar el archivo JSON en Postman</li>
+                <li>Ejecutar las peticiones en orden secuencial</li>
+                <li>Las cookies y variables se manejan automáticamente</li>
+            </ol>
+            
+            <h3>Herramientas Alternativas:</h3>
+            <p>También se puede usar <strong>curl</strong>, <strong>Thunder Client</strong> o <strong>Insomnia</strong>:</p>
+            
+            <h3>Ejemplo con curl:</h3>
+            <code>curl -X POST http://localhost:5000/registro -H "Content-Type: application/json" -d '{"usuario":"test", "contraseña":"1234"}'</code>
+        </div>
+    </body>
+    </html>
